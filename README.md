@@ -6,4 +6,4 @@ La configuración necesaria se puede encontrar en la documentación de debezium:
 Aquí hay una configuración de ejemplo: [logminer](logMiner.sql).
 
 ## 2. Instalación del plugin de Debezium en EventStreams
-
+[KafkaConnect.yaml](logMiner.sql).

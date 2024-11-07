@@ -1,3 +1,3 @@
 # Conexión de Oracle con Event Streams 
 
-## Configurar LogMiner en Oracle 
+## 1.Configurar LogMiner en Oracle 

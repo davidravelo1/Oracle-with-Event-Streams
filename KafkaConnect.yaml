@@ -1,0 +1,79 @@
+﻿apiVersion: eventstreams.ibm.com/v1beta2
+kind: KafkaConnect
+metadata:
+  annotations:
+    eventstreams.ibm.com/use-connector-resources: 'true'
+  generation: 1
+ name: Nombre-instancia-KafkaConnect
+spec:
+  config:
+    config.storage.topic: connect-cluster-configs
+    group.id: connect-cluster-oracle
+    offset.storage.topic: connect-cluster-offsets
+    status.storage.topic: connect-cluster-status
+  bootstrapServers: 'kafka-kafka-bootstrap.events.svc:9093'
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 8Gi
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+  build:
+    output:
+      image: 'oracle-connect:2.7.4'
+      type: imagestream
+    plugins:
+      - artifacts:
+          - type: tgz
+            url: 'https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/2.7.3.Final/debezium-connector-oracle-2.7.3.Final-plugin.tar.gz'
+          - type: jar
+            url: 'https://download.oracle.com/otn-pub/otn_software/jdbc/235/ojdbc11-full.tar.gz'
+        name: oracle-cdc
+  authentication:
+    certificateAndKey:
+      certificate: user.crt
+      key: user.key
+      secretName: connector
+    type: tls
+  template:
+    buildConfig:
+      pullSecret: ibm-entitlement-key
+    connectContainer:
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+    pod:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - amd64
+                      - s390x
+                      - ppc64le
+      imagePullSecrets:
+        - name: secret-docker
+      metadata:
+        annotations:
+          cloudpakId: c8b82d189e7545f0892db9ef2731b90d
+          productVersion: 11.4.0
+          productID: 2a79e49111f44ec3acd89608e56138f5
+          cloudpakName: IBM Cloud Pak for Integration
+          productChargedContainers: connect-cluster-prueb-connect
+          productCloudpakRatio: '2:1'
+          productName: IBM Event Streams for Non Production
+          eventstreams.production.type: CloudPakForIntegrationNonProduction
+          productMetric: VIRTUAL_PROCESSOR_CORE
+  tls:
+    trustedCertificates:
+      - certificate: ca.crt
+        secretName: kafka-cluster-ca-cert

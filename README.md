@@ -9,5 +9,6 @@ Además, ejecutar el siguiente comando ***ALTER TABLE SCHEMA.NOMBRE_TABLA ADD SU
 
 ## 2. Instalación del plugin de Debezium en EventStreams
 
+
 Se necesita del plugin de 
 [KafkaConnect.yaml](logMiner.sql).

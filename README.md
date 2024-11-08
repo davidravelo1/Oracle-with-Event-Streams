@@ -9,7 +9,8 @@ Además, ejecutar el siguiente comando ***ALTER TABLE SCHEMA.NOMBRE_TABLA ADD SU
 
 ## 2. Instalación del plugin de Debezium en EventStreams
 Genere las credenciales necesiarias para crear una instancia de kafka Connect.
-[Logo de mi proyecto](assests/Credenciales.jpeg)
+<img width="836" alt="Captura de pantalla 2024-11-07 a las 11 00 55 a  m" src="https://github.com/user-attachments/assets/b7c79674-b4ef-4d4f-a9b8-70b7f9ef59fc">
+
 
 []
 Se necesita del plugin de 

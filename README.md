@@ -8,7 +8,9 @@ Aquí hay una configuración de ejemplo: [logminer](logMiner.sql).
 Además, ejecutar el siguiente comando ***ALTER TABLE SCHEMA.NOMBRE_TABLA ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS*** para las tablas que desea leer en event streams.
 
 ## 2. Instalación del plugin de Debezium en EventStreams
+Genere las credenciales necesiarias para crear una instancia de kafka Connect.
+![Logo de mi proyecto](assests/Credenciales.jpeg)
 
-
+[]
 Se necesita del plugin de 
 [KafkaConnect.yaml](logMiner.sql).

@@ -21,4 +21,5 @@ Asegurarse de que es poible conectarse a Oracle e incluir la configuración tabl
 
 ## 4. Oracle conectado a event streams. 
 Se creara un topic por cada tabla que lea el event streams. 
-![image](https://github.com/user-attachments/assets/3f4d00bd-f4ef-4c1d-a535-0d1fb365e603)
+![image](https://github.com/user-attachments/assets/6a083183-a16a-4607-8dea-18b9d70899e4)
+

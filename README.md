@@ -13,3 +13,12 @@ Genere las credenciales necesiarias para crear una instancia de kafka Connect.
 Se necesita del plugin de debezium encontrado en repositorio de maven [Debezium](https://repo1.maven.org/maven2/io/debezium/debezium-connector-oracle/) y en algunos casos un JDBC en el Yaml de configuración. [Instalar conectores](https://ibm.github.io/event-automation/es/connecting/setting-up-connectors/). 
 Una configuracion de ejemplo se puede en el archivo kafkaConnect.yaml
 [KafkaConnect.yaml](KafkaConnect.yaml).
+
+## 3. Configurar conector de Debezium         
+Todas las configuraciones posibles se pueden encontrar en la documentación de debezium [Documentación Debezium](https://debezium.io/documentation/reference/stable/connectors/oracle.html#setting-up-oracle).
+
+Asegurarse de que es poible conectarse a Oracle e incluir la configuración table.include.list para filtrar las tablas de las que quiere ver eventos.
+
+## 4. Oracle conectado a event streams. 
+Se creara un topic por cada tabla que lea el event streams. 
+![image](https://github.com/user-attachments/assets/3f4d00bd-f4ef-4c1d-a535-0d1fb365e603)
